@@ -11,4 +11,7 @@ label_loc = board.find_loc(label); % the Node labelled "label"
 
 % estimated_cost = ...
 
+% Zach's solution
+estimated_cost = abs(label_loc.row - dest_loc.row) + abs(label_loc.col - dest_loc.col);
+
 end
