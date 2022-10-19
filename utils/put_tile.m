@@ -14,13 +14,35 @@ end
 % Step 1: Use A*-search to construct a sequence of moves 
 % M={'up', 'down', 'left', 'right}, which will move the tile labeled
 % "label" and move it to the location "dest_loc"
-[sequence, num_nodes_searched] = A_star_search(board, label, dest_loc, immovable_locs);
+if label == board.tiles(board.blank_tile.row, board.blank_tile.col)
+    % if the thing we want to place is already blank_tile, then just cont.
+    [sequence, num_nodes_searched] = A_star_search(board, label, dest_loc, immovable_locs);
 
-% Step 2: Make all the moves returned by the A* search
-for i = 1:length(sequence)
-    board = board.make_move(sequence(i));
+    % Step 2: Make all the moves returned by the A* search
+    for i = 1:length(sequence)
+        board = board.make_move(sequence(i));
+    end
+    
+    board.num_nodes_searched = board.num_nodes_searched + num_nodes_searched;
+else
+    while ~(label_loc == dest_loc)
+        assert(~isKey(immovable_locs, jsonencode(label_loc)))
+        immovable_locs(jsonencode(label_loc)) = 0;
+        [sequence, num_nodes_searched] = A_star_search(board, board.tiles(board.blank_tile.row, board.blank_tile.col), dest_loc, immovable_locs);
+        for i = 1:length(sequence)
+            board = board.make_move(sequence(i));
+        end
+        board.num_nodes_searched = board.num_nodes_searched + num_nodes_searched;
+        remove(immovable_locs, jsonencode(label_loc));
+
+        [sequence, num_nodes_searched] = A_star_search(board, board.tiles(board.blank_tile.row, board.blank_tile.col), label_loc, immovable_locs);
+        for i = 1:length(sequence)
+            board = board.make_move(sequence(i));
+        end
+        board.num_nodes_searched = board.num_nodes_searched + num_nodes_searched;
+
+        label_loc = board.find_loc(label);
+    end
 end
-
-board.num_nodes_searched = board.num_nodes_searched + num_nodes_searched;
 
 end
