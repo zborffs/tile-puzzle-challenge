@@ -4,7 +4,7 @@ Solve Tile Puzzle (using A* Search)
 The goal of this challenge is to solve a tile puzzle of arbitrary size using A* search.
 
 ![](figures/unsolved_visualization.png)
-*Figure 1: An example 3x3 tile puzzle that has been scrambled.*
+*Figure 1: An example 3x3 tile puzzle, which has been scrambled.*
 
 Your Task
 ---------
@@ -31,8 +31,8 @@ We can learn about how A* search works by implementing it in code. Learning how 
 
 We may also discover ways of measuring the *performance* of an arbitrary search algorithm, by first implementing a well-known algorithm like A*. If we develop a new algorithm later, we may test its measured performance against that of A* to determine in what ways our new algorithm is better or worse at solving the problem.
 
-Resource
---------
+Resources
+---------
 1. [Computerphile: A* Search](https://www.youtube.com/watch?v=ySN5Wnu88nE) - Good high-level understanding of A* search.
 2. [Wikipedia](https://en.wikipedia.org/wiki/A*_search_algorithm) - Good in-depth description of what the algorithm does and how it works. Hint: Look at pseudocode!
 3. [Brilliant.org](https://brilliant.org/wiki/a-star-search/) - Good high-level / low-level description of A* search
