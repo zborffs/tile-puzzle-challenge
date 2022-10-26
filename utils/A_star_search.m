@@ -56,8 +56,6 @@ while ~isempty(open_set)
 
 
     % remove the board configuration from the list
-%     end_loc
-%     open_set(current_index).tiles
     open_set(current_index) = [];
     
 

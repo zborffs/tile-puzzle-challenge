@@ -1,7 +1,7 @@
 addpath('utils'); % add the 'utils' folder to the path
 
 % Update this paramter to test your solution to different board sizes
-dimension = 3; % the dimensions of the Board (e.g. 3x3 or 4x4 or ...)
+dimension = 4; % the dimensions of the Board (e.g. 3x3 or 4x4 or ...)
 
 % Don't touch anything beyond this line.
 num_problems = 100; % the number of random problems to solve
